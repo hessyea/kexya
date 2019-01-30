@@ -1,0 +1,27 @@
+function findNPC(namme){
+	var founds = false;
+	get_map().npcs.forEach(function(pack){
+					if(pack.id!=namme){ console.log("No Armor"); return;}
+					founds = true;
+					if(pack.boundaries) // boundaries: for phoenix, mvampire
+					{
+						pack.last=pack.last||0;
+						var boundary= pack.boundaries[pack.last%pack.boundaries.length];
+						pack.last++;
+						smart.map=boundary[0];
+						smart.x=(boundary[1]+boundary[3])/2;
+						smart.y=(boundary[2]+boundary[4])/2;
+					}
+					else if(pack.boundary)
+					{
+						var boundary=pack.boundary;
+						smart.map=name;
+						smart.x=(boundary[0]+boundary[2])/2;
+						smart.y=(boundary[1]+boundary[3])/2;
+					}
+				});
+	if(!founds) console.log("No Armor");
+	else console.log("there");
+	return smart;
+	
+}
